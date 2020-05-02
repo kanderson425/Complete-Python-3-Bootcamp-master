@@ -3,8 +3,8 @@
 import math
 import random
 import pygame
-import Tkinter as tk 
-# from tk import messagebox
+import tkinter as tk
+# from tk import tkMessageBox
 
 class cube(object):
     rows = 0
@@ -22,10 +22,19 @@ class snake(object):
     body = []
     turns = {}
     def __init__(self,color,pos):
-        pass
+        self.color = color
+        self.head = cube(pos)
+        self.body.append(self.head)
+        self.dirnx = 0
+        self.dirny = 1
 
     def move(self):
-        pass
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+        
+            keys = pygame.key.get_pressed()
+
 
     def reset(self,pos):
         pass
