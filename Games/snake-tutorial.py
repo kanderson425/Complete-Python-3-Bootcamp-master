@@ -4,7 +4,7 @@ import math
 import random
 import pygame
 import tkinter as tk
-# from tk import tkMessageBox
+# import tkMessageBox from tkinter
 
 class cube(object):
     rows = 0
@@ -39,22 +39,22 @@ class snake(object):
                 if keys[pygame.K_LEFT]:
                     self.dirnx = -1
                     self.dirny = 0
-                    self.turns[self.head.pos[:]] = [sef.dirnx,self.dirny]
+                    self.turns[self.head.pos[:]] = [self.dirnx,self.dirny]
 
                 elif keys[pygame.K_RIGHT]:
                     self.dirnx = 1
                     self.dirny = 0
-                    self.turns[self.head.pos[:]] = [sef.dirnx,self.dirny]
+                    self.turns[self.head.pos[:]] = [self.dirnx,self.dirny]
 
                 elif keys[pygame.K_UP]:
                     self.dirnx = 0
                     self.dirny = -1
-                    self.turns[self.head.pos[:]] = [sef.dirnx,self.dirny]
+                    self.turns[self.head.pos[:]] = [self.dirnx,self.dirny]
 
                 elif keys[pygame.K_DOWN]:
                     self.dirnx = 0
                     self.dirny = 1
-                    self.turns[self.head.pos[:]] = [sef.dirnx,self.dirny]
+                    self.turns[self.head.pos[:]] = [self.dirnx,self.dirny]
 
         
 
