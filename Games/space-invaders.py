@@ -75,12 +75,15 @@ def move_right():
 def fire_bullet():
     #Declare bulletstate as a global if it needs changed
     global bulletstate
-
-    #Move the bullet to just above the player
-    x = player.xcor()
-    y = player.ycor()
-    bullet.setposition(x, y + 10)
-    bullet.showturtle()
+    print(bulletstate)
+    if bulletstate == "ready":
+        bulletstate = "fire"
+        print(bulletstate)
+        #Move the bullet to just above the player
+        x = player.xcor()
+        y = player.ycor() + 10
+        bullet.setposition(x, y)
+        bullet.showturtle()
 
 #Create Keyboard bindings
 turtle.listen()
@@ -108,6 +111,20 @@ while True:
         y-= 40
         enemyspeed *= -1
         enemy.sety(y)
+
+    #Move the bullet
+    if bulletstate == "fire":
+        y = bullet.ycor()
+        y += bulletspeed
+        bullet.sety(y)
+
+    #Check to see if the bullet has gone to the top
+    if bullet.ycor() > 275:
+        bullet.hideturtle()
+        bulletstate = "ready"
+
+
+delay = input("Press enter to finish.")
 
 
 
