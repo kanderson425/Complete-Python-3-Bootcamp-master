@@ -38,7 +38,7 @@ enemy.color("red")
 enemy.shape("circle")
 enemy.penup()
 enemy.speed(0)
-enemy.setposition(-200, 250)
+enemy.setposition(-200, -200)
 
 enemyspeed = 2
 
@@ -139,6 +139,12 @@ while True:
         bullet.setposition(0, -400)
         #Reset the enemy
         enemy.setposition(-200, 250)
+
+    if isCollision(enemy, player):
+        player.hideturtle()
+        enemy.hideturtle()
+        print("Game over!")
+        break
 
 
 delay = input("Press enter to finish.")
