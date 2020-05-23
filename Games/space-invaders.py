@@ -139,7 +139,9 @@ while True:
             bulletstate = "ready"
             bullet.setposition(0, -400)
             #Reset the enemy
-            enemy.setposition(-200, 250)
+            x = random.randint(-200,200)
+            y = random.randint(100,250)
+            enemy.setposition(x,y)
 
         if isCollision(enemy, player):
             player.hideturtle()
