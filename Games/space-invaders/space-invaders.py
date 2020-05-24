@@ -6,7 +6,9 @@ import random
 
 #Set up the screen
 wn = turtle.Screen()
-wn.bgcolor("black")
+# wn.bgcolor("blue")
+wn.bgpic('bgpic.gif')
+wn.setup(600,600)
 wn.title("Space Invaders")
 
 #Draw Border
@@ -22,10 +24,25 @@ for side in range(4):
     border_pen.lt(90)
 border_pen.hideturtle()
 
+#Set the score to 0
+score = 0
+
+#Draw the score
+score_pen = turtle.Turtle()
+score_pen.speed(0)
+score_pen.color("white")
+score_pen.penup()
+score_pen.setposition(-290,280)
+scorestring = "Score: %s" %score
+score_pen.write(scorestring, False, align="left", font=("Arial", 14, "normal"))
+score_pen.hideturtle()
+
 #Create the player turtle
-player = turtle.Turtle()
-player.color("blue")
-player.shape("triangle")
+player_sprite = "player_sprite.gif"
+wn.register_shape(player_sprite)
+player = turtle.Turtle(shape=player_sprite)
+# player.color("blue")
+# player.shape(player_sprite)
 player.penup()
 player.speed(0)
 player.setposition(0, - 250)
@@ -41,9 +58,11 @@ enemies = []
 #Add enemies to list
 for i in range(number_of_enemies):
     #Create the enemy
-
     enemies.append(turtle.Turtle())
+    enemy_sprite = "enemy_sprite.gif"
+    wn.register_shape(enemy_sprite)
 for enemy in enemies:
+    # enemy = turtle.Turtle(shape=enemy_sprite) 
     enemy.color("red")
     enemy.shape("circle")
     enemy.penup()
@@ -148,6 +167,12 @@ while True:
             x = random.randint(-200,200)
             y = random.randint(100,250)
             enemy.setposition(x,y)
+            #Update the score
+            score += 10
+            scorestring = "Score: %s" %score
+            score_pen.clear()
+            score_pen.write(scorestring, False, align="left", font=("Arial", 14, "normal"))
+
 
         if isCollision(enemy, player):
             player.hideturtle()
@@ -165,11 +190,3 @@ while True:
     if bullet.ycor() > 275:
         bullet.hideturtle()
         bulletstate = "ready"
-
-
-
-
-delay = input("Press enter to finish.")
-
-
-
