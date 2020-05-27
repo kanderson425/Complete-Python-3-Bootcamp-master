@@ -64,7 +64,7 @@ for i in range(number_of_enemies):
 for enemy in enemies:
     # enemy = turtle.Turtle(shape=enemy_sprite) 
     enemy.color("red")
-    enemy.shape("circle")
+    enemy.shape("turtle")
     enemy.penup()
     enemy.speed(0)
     x = random.randint(-200,200)
