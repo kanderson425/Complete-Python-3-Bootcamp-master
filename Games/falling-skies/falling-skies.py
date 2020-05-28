@@ -2,6 +2,8 @@
 # By @TokyoEdTech
 
 import turtle
+import random
+
 wn = turtle.Screen()
 wn.title("Falling Skies by @TokyoEdTech")
 wn.bgcolor("green")
@@ -55,7 +57,21 @@ while True:
 
     #Move the good guy
     y = good_guy.ycor()
-    y -= 3
+    y -= 10
     good_guy.sety(y)
+    # good_guy.sety(good_guy.ycor() - 3)
+
+    # Check if off the screen
+    if y < -300:
+        x = random.randint(-380, 380)
+        y = random.randint(300, 400)
+        good_guy.goto(x, y)
+
+    # Check for a collision with the player
+    if good_guy.distance(player) < 20:
+        x = random.randint(-380, 380)
+        y = random.randint(300, 400)
+        good_guy.goto(x, y)
+
 
 wn.mainloop()
