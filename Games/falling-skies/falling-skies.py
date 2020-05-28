@@ -17,6 +17,14 @@ player.penup()
 player.goto(0, -250)
 player.direction = "stop"
 
+#Add the good_guy
+good_guy = turtle.Turtle()
+good_guy.speed(0)
+good_guy.shape("circle")
+good_guy.color("blue")
+good_guy.penup()
+good_guy.goto(0, 250)
+
 # Functions
 def go_left():
     player.direction = "left"
@@ -45,7 +53,9 @@ while True:
         x += 3
         player.setx(x)
 
-
-
+    #Move the good guy
+    y = good_guy.ycor()
+    y -= 3
+    good_guy.sety(y)
 
 wn.mainloop()
