@@ -4,6 +4,10 @@
 import turtle
 import random
 
+
+score = 0
+lives = 3
+
 wn = turtle.Screen()
 wn.title("Falling Skies by @TokyoEdTech")
 wn.bgcolor("green")
@@ -37,17 +41,26 @@ for i in range(20):
 bad_guys = []
 
 # Add the bad_guys
-for i in range(5):
+for i in range(20):
     bad_guy = turtle.Turtle()
     bad_guy.speed(0)
     bad_guy.shape("circle")
     bad_guy.color("red")
     bad_guy.penup()
     bad_guy.goto(100, 250)
-    bad_guy.speed = random.randint(1, 10)
+    bad_guy.speed = random.randint(1, 5)
     bad_guys.append(bad_guy)
 
-
+# Make the pen
+pen = turtle.Turtle()
+pen.hideturtle()
+pen.speed(0)
+pen.shape("square")
+pen.color("white")
+pen.penup()
+pen.goto(0, 260)
+font = ("Courier", 24, "normal")
+pen.write("Score: {} Lives: {}".format(score, lives), align="center", font=font)
 
 # Functions
 def go_left():
@@ -77,6 +90,12 @@ while True:
         x = player.xcor()
         x += 5
         player.setx(x)
+    
+    if player.xcor() < -390:
+        player.direction = "right"
+
+    if player.xcor() > 390:
+        player.direction = "left"
 
     #Move the good guys
     for good_guy in good_guys:
@@ -95,6 +114,9 @@ while True:
             x = random.randint(-380, 380)
             y = random.randint(300, 400)
             good_guy.goto(x, y)
+            score += 10
+            pen.clear()
+            pen.write("Score: {} Lives: {}".format(score, lives), align="center", font=font)
 
     #Move the bad guys
     for bad_guy in bad_guys:
@@ -109,10 +131,13 @@ while True:
             bad_guy.goto(x, y)
 
         # Check for a collision with the player
-        if good_guy.distance(player) < 20:
+        if bad_guy.distance(player) < 20:
             x = random.randint(-380, 380)
             y = random.randint(300, 400)
             bad_guy.goto(x, y)
-            print("BAD COLLISION")
+            score -= 10
+            lives -= 1
+            pen.clear()
+            pen.write("Score: {} Lives: {}".format(score, lives), align="center", font=font)
 
 wn.mainloop()
