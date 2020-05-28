@@ -2,11 +2,11 @@
 # By @TokyoEdTech
 
 import turtle
-
 wn = turtle.Screen()
 wn.title("Falling Skies by @TokyoEdTech")
 wn.bgcolor("green")
 wn.setup(width=800, height=600)
+# wn.tracer(0)
 
 #Add the player
 player = turtle.Turtle()
@@ -24,8 +24,15 @@ def go_left():
 def go_right():
     player.direction = "right"
 
+# Keybboard binding
+wn.listen()
+wn.onkeypress(go_left,"Left")
+wn.onkeypress(go_right,"Right")
+
 # Main game loop
 while True:
+    #update screen
+    wn.update()
 
     # Move the player
     if player.direction == "left":
