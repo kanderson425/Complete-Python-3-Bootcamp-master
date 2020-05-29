@@ -3,7 +3,7 @@
 
 import turtle
 import random
-
+import os
 
 score = 0
 lives = 3
@@ -119,6 +119,7 @@ while True:
 
         # Check for a collision with the player
         if good_guy.distance(player) < 40:
+            os.system("afplay ./sounds/power-up.wav&")
             x = random.randint(-380, 380)
             y = random.randint(300, 400)
             good_guy.goto(x, y)
@@ -140,6 +141,7 @@ while True:
 
         # Check for a collision with the player
         if bad_guy.distance(player) < 40:
+            os.system("afplay ./sounds/shotgun.wav&")
             x = random.randint(-380, 380)
             y = random.randint(300, 400)
             bad_guy.goto(x, y)
