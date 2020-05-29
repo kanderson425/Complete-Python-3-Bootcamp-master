@@ -11,6 +11,7 @@ lives = 3
 wn = turtle.Screen()
 wn.title("Falling Skies by @TokyoEdTech")
 wn.bgcolor("green")
+wn.bgpic("./img/background.gif")
 wn.setup(width=800, height=600)
 wn.tracer(0)
 
