@@ -57,7 +57,7 @@ for i in range(20):
     bad_guy.speed = random.randint(1, 5)
     bad_guys.append(bad_guy)
 
-# Make the pen
+# Make the score pen
 pen = turtle.Turtle()
 pen.hideturtle()
 pen.speed(0)
@@ -67,6 +67,16 @@ pen.penup()
 pen.goto(0, 260)
 font = ("Courier", 24, "normal")
 pen.write("Score: {} Lives: {}".format(score, lives), align="center", font=font)
+
+# Make the end of game message pen
+scorePen = turtle.Turtle()
+scorePen.hideturtle()
+scorePen.speed(0)
+scorePen.shape("square")
+scorePen.color("white")
+scorePen.penup()
+scorePen.goto(0, 0)
+font = ("Courier", 24, "normal")
 
 # Functions
 def go_left():
@@ -83,10 +93,9 @@ wn.onkeypress(go_left,"Left")
 wn.onkeypress(go_right,"Right")
 
 # Main game loop
-while True:
+while lives > 0:
     #update screen
     wn.update()
-  
 
     # Move the player
     if player.direction == "left":
@@ -126,6 +135,7 @@ while True:
             score += 10
             pen.clear()
             pen.write("Score: {} Lives: {}".format(score, lives), align="center", font=font)
+            
 
     #Move the bad guys
     for bad_guy in bad_guys:
@@ -149,5 +159,11 @@ while True:
             lives -= 1
             pen.clear()
             pen.write("Score: {} Lives: {}".format(score, lives), align="center", font=font)
+
+else:
+    scorePen.clear()
+    scorePen.write("GAME OVER!", align="center", font=font)
+    print("The game is over!")
+
 
 wn.mainloop()
