@@ -39,7 +39,9 @@ for i in range(20):
     good_guy.shape("./img/nut.gif")
     good_guy.color("blue")
     good_guy.penup()
-    good_guy.goto(-100, 250)
+    x = random.randint(-380, 380)
+    y = random.randint(300, 400)
+    good_guy.goto(x, y)
     good_guy.speed = random.randint(1, 5)
     good_guys.append(good_guy)
 
@@ -53,7 +55,9 @@ for i in range(20):
     bad_guy.shape("./img/hunter.gif")
     bad_guy.color("red")
     bad_guy.penup()
-    bad_guy.goto(100, 250)
+    x = random.randint(-380, 380)
+    y = random.randint(300, 400)
+    bad_guy.goto(x, y)
     bad_guy.speed = random.randint(1, 5)
     bad_guys.append(bad_guy)
 
