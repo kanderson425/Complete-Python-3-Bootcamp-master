@@ -167,6 +167,8 @@ while lives > 0:
 else:
     scorePen.clear()
     scorePen.write("GAME OVER!", align="center", font=font)
+    os.system("afplay ./sounds/pacman_dies_y.wav&")
+    
     print("The game is over!")
 
 
